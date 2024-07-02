@@ -26,6 +26,14 @@ def count_fingers(lst):
     return cnt
 
 cap = cv2.VideoCapture(0)
+
+drawing = mp.solutions.drawing_utils
+hands = mp.solutions.hands
+hand_obj = hands.Hands(max_num_hands=1)
+
+start_init = False
+prev = -1
+
 while True:
     end_time = time.time()
     ret, frm = cap.read()
