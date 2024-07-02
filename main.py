@@ -26,6 +26,15 @@ def count_fingers(lst):
     return cnt
 
 cap = cv2.VideoCapture(0)
+while True:
+    end_time = time.time()
+    ret, frm = cap.read()
+    if not ret:
+        continue
+
+    frm = cv2.flip(frm, 1)
+    res = hand_obj.process(cv2.cvtColor(frm, cv2.COLOR_BGR2RGB))
+
     if res.multi_hand_landmarks:
         hand_keyPoints = res.multi_hand_landmarks[0]
         cnt = count_fingers(hand_keyPoints)
