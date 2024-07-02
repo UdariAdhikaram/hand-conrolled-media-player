@@ -25,3 +25,26 @@ def count_fingers(lst):
 
     return cnt
 
+cap = cv2.VideoCapture(0)
+        if prev != cnt:
+            if not start_init:
+                start_time = time.time()
+                start_init = True
+            elif end_time - start_time > 0.2:
+                if cnt == 1:
+                    pyautogui.press("right")
+                elif cnt == 2:
+                    pyautogui.press("left")
+                elif cnt == 3:
+                    pyautogui.press("up")
+                elif cnt == 4:
+                    pyautogui.press("down")
+                elif cnt == 5:
+                    pyautogui.press("space")
+                elif cnt == 0:  # Assuming a fist for volume down
+                    pyautogui.press("volumeup")
+                elif cnt == 6:  # Adding a hypothetical case for volume up
+                    pyautogui.press("volumedown")
+
+                prev = cnt
+                start_init = False
