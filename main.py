@@ -26,6 +26,10 @@ def count_fingers(lst):
     return cnt
 
 cap = cv2.VideoCapture(0)
+    if res.multi_hand_landmarks:
+        hand_keyPoints = res.multi_hand_landmarks[0]
+        cnt = count_fingers(hand_keyPoints)
+
         if prev != cnt:
             if not start_init:
                 start_time = time.time()
